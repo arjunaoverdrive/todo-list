@@ -1,6 +1,6 @@
 # ToDoList
 ToDoList Java Spring Boot application
-Technologies used: Java, Spring Boot, MySQL, JavaScript (jQuery), HTML, CSS, Thymeleaf
+Technologies used: Java, Spring Boot, Spring Security, MySQL, JavaScript (jQuery), HTML, CSS, Thymeleaf
 
 Installation steps:
 1.Install MySQL v 8.x. Create a schema and a user with admin rights for this schema.
