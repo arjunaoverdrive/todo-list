@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <script src="/js/jquery-3.4.0.min.js"></script>
+    <script src="/js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/signin_styles.css">
+</head>
+<body>
+<div id="central-container">
+    <div id="home-page-header-cont">
+        <div id="clock"></div>
+    </div>
+    <br>
+    <div id="registration-page">
+        <div th:if="${param.success}">
+            <div class="alert alert-info">Вы успешно зарегистрировались в приложении
+            </div>
+        </div>
+        <div th:if="${param.error}">
+            <div class="alert alert-info">Ошибка регистрации. Юзер с таким именем уже существует</div>
+        </div>
+
+    </div>
+    <form id="signin_form" th:action="@{/registration/signin}" method="post" th:object="${userDto}">
+        <input type="text" class="signin_item" required placeholder="Введите имя" th:field="*{firstName}"/>
+        <br>
+        <input type="text" class="signin_item" required placeholder="Введите фамилию" th:field="*{lastName}"/>
+        <br>
+        <input type="email" class="signin_item" required placeholder="Введите email"  th:field="*{email}"/>
+        <br>
+        <input type="password" class="signin_item" required placeholder="Введите пароль" minlength="5" maxlength="12" th:field="*{password}"/>
+        <br>
+        <button type="submit" id="signin-button" class="signin_item">Регистрация</button>
+        <br>
+        <span>Есть аккаунт? <a th:href="@{/login}">Войти</a></span>
+    </form>
+
+</div>
+</div>
+</body>
+</html>
