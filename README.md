@@ -1,7 +1,7 @@
 # ToDoList
 ToDoList Java Spring Boot application  
 
-Technologies used: Java, Spring Boot, Spring Security, MySQL, JavaScript (jQuery), HTML, CSS, Thymeleaf  
+Technologies used: Java, Spring Boot, Spring Security, MySQL, JavaScript (jQuery), HTML, CSS, Thymeleaf, Log4J  
 
 Installation steps:  
 
