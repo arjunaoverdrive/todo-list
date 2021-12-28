@@ -6,9 +6,10 @@ Technologies used: Java, Spring Boot, Spring Security, MySQL, JavaScript (jQuery
 Installation steps:  
 
 1. Install MySQL v 8.x. Create a schema and a user with admin rights for this schema.
-2. Open the application.properties file, and replace the default values with the valid the DB credentials in spring.datasource parameters.
-3. Specify the server port. Otherwise, the app will use port 8888. 
-4. Create a bat file to run the app without having to open the command prompt. Insert the following content:  
+2. Build the app jar file. Use mvn package.  
+3. Open the application.properties file, and replace the default values with the valid the DB credentials in spring.datasource parameters.
+4. Specify the server port. Otherwise, the app will use port 8888. 
+5. Create a bat file to run the app without having to open the command prompt. Insert the following content:  
   chcp 1251  
   start http://localhost:8888  
   java -jar "C:\Users\Igor\Desktop\ToDoList_1.4.jar"  
