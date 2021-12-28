@@ -13,6 +13,6 @@ Installation steps:
   chcp 1251  
   start http://localhost:8888  
   java -jar "C:\Users\Igor\Desktop\ToDoList_1.5.jar". Remember to replace the path to the jar file with the actual address.  
-The example above is given for Windows, so it can be run in a Linux terminal like this: java -jar <Path-to-file>.  
+The example above is given for Windows, so it can be run in a Linux terminal like this: java -jar *<Path-to-file>*.  
   
 5.Once the bat file is created, you can run the app by simply clicking it. 
