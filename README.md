@@ -13,5 +13,6 @@ Insert the following content:
   chcp 1251  
   start http://localhost:8888  
   java -jar "C:\Users\Igor\Desktop\ToDoList-1.0-SNAPSHOT.jar"
-Remember to replace the path to the jar file with the actual address.  
+<<<<<<< HEAD
+Remember to replace the path to the jar file with the actual address. 
 
