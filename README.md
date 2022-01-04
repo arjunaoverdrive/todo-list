@@ -14,4 +14,4 @@ Insert the following content:
   start http://localhost:8888  
   java -jar "C:\Users\Igor\Desktop\ToDoList-1.0-SNAPSHOT.jar"
 Remember to replace the path to the jar file with the actual address.  
-5.Once the bat file is created, you can run the app by simply clicking it. 
+
