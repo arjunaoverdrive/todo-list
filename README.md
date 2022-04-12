@@ -1,5 +1,5 @@
 # ToDoList
-ToDoList Java Spring Boot application
+ToDoList Java Spring Boot application  
 #Technologies used:  
 **Java, Spring Boot, Spring Security, Spring Data Jpa, MySQL, JavaScript (jQuery), HTML, CSS, Thymeleaf**
 
