@@ -1,0 +1,23 @@
+2022-04-23 01:53:25 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 01:55:08 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 02:23:24 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 02:23:40 INFO  TaskService:50 -task task 1 for user id=1, email='igor1984s@yandex.ru has been sent to  backend
+2022-04-23 02:23:40 INFO  TaskController:60 -saving task for user id=1, email='igor1984s@yandex.ru
+2022-04-23 02:26:32 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 02:27:21 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 02:27:36 INFO  TaskService:81 -updated task 12 for user id=1, email='igor1984s@yandex.ru
+2022-04-23 02:27:36 INFO  TaskService:50 -task task 1 for user id=1, email='igor1984s@yandex.ru has been sent to  backend
+2022-04-23 02:29:30 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 02:30:00 INFO  TaskService:81 -updated task 12 for user id=1, email='igor1984s@yandex.ru
+2022-04-23 02:30:00 INFO  TaskService:50 -task task 1 for user id=1, email='igor1984s@yandex.ru has been sent to  backend
+2022-04-23 02:31:36 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 02:35:06 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 02:36:46 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 02:37:00 INFO  TaskService:62 -task with id 12has been removed
+2022-04-23 02:40:39 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 02:41:38 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 02:43:02 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 02:44:13 INFO  AppSecurityConfig:33 -config http security
+2022-04-23 02:44:36 INFO  TaskService:50 -task task 1 for user id=1, email='igor1984s@yandex.ru has been sent to  backend
+2022-04-23 02:44:36 INFO  TaskController:49 -saving task for user id=1, email='igor1984s@yandex.ru
+2022-04-23 02:44:39 INFO  TaskService:62 -task with id 13has been removed

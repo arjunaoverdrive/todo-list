@@ -82,7 +82,6 @@ $(function(){
             return false;
         }
 
-
 	    else {
         let data = $('#add-task-form').serialize();
 

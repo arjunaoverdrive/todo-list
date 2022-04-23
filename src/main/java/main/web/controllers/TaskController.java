@@ -15,84 +15,43 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/tasks")
 public class TaskController {
 
     private final Logger logger = Logger.getLogger(TaskController.class);
 
     private final TaskService taskService;
-    private final UserService userService;
 
     @Autowired
-    public TaskController(TaskService taskService, UserService userService) {
+    public TaskController(TaskService taskService) {
         this.taskService = taskService;
-        this.userService = userService;
     }
 
-    @ModelAttribute("tasks")
-    public List<Task> tasks() {
-        User user = userService.getUserFromSecurityContext();
-        return taskService.getTasks(user);
-    }
-
-    @GetMapping(value = "/tasks/")
-    public ResponseEntity<List<Task>> list() {
-        User user = userService.getUserFromSecurityContext();
-        logger.info("getting tasks for user " + user);
-        List<Task> taskList = taskService.getTasks(user);
-        logger.info("found " + taskList.size() + " tasks");
-        if (taskList == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-        return ResponseEntity.ok(taskList);
-    }
-
-    @GetMapping(value = "/tasks/{id}")
-    public ResponseEntity<Task> getTask(@PathVariable int id, Model model) {
-        Optional<Task> taskOptional = taskService.getTaskById(id);
-        if (!taskOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-        Task task = (Task) taskOptional.get();
-        model.addAttribute("task", task);
+    @GetMapping(value = "{id}")
+    public ResponseEntity<Task> getTask(@PathVariable("id") int id) {
+        Task task = taskService.getTaskById(id);
         logger.info("task " + task + " has been retrieved from the repo");
         return ResponseEntity.ok(task);
     }
 
-    @PostMapping(value = "/tasks/")
-    public ResponseEntity<Integer> add(Task task, Model model) {
-        model.addAttribute("task2add", task);
-        User user = userService.getUserFromSecurityContext();
-        taskService.saveTask(task, user);
-        logger.info("saving task for user " + user);
+    @PostMapping(value = "/")
+    public ResponseEntity<Integer> addTask(Task task) {
+        taskService.saveTask(task);
         return ResponseEntity.ok(task.getId());
     }
 
-
-    @PutMapping(value = "/tasks/{id}")
-    public ResponseEntity<Task> update(@PathVariable int id, Task task) {
-        Optional<Task> taskOptional = taskService.getTaskById(id);
-        if (!taskOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-        Task task2update = taskOptional.get();
-        logger.info("retrieved " + task2update);
-        User user = userService.getUserFromSecurityContext();
-        logger.info("updating task for user " + user);
-        return ResponseEntity.ok(taskService.updateTask(task, task2update, user));
+    @PutMapping(value = "{id}")
+    public ResponseEntity<Task> updateTask(@PathVariable("id") int id, Task task) {
+        return ResponseEntity.ok(taskService.updateTask(id, task));
     }
 
-    @DeleteMapping(value = "/tasks/{id}")
-    public ResponseEntity<HttpStatus> delete(@PathVariable int id) {
-        Optional<Task> taskOptional = taskService.getTaskById(id);
-        if (!taskOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
+    @DeleteMapping(value = "{id}")
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id") int id) {
         taskService.deleteTask(id);
-        logger.info("deleting task " + taskOptional);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/tasks/")
+    @DeleteMapping(value = "/")
     public ResponseEntity<HttpStatus> deleteAll() {
         logger.info("deleting tasks");
         taskService.deleteAllTasks();

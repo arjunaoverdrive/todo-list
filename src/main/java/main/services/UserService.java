@@ -10,6 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService extends UserDetailsService {
 
@@ -32,10 +34,8 @@ public class UserService extends UserDetailsService {
     }
 
     public User getUserByName(String name){
-        User user = userRepository.findUserByEmail(name);
-        if(user == null){
-            throw new RuntimeException("User with this name doesn't exist");
-        }
+        User user = Optional.ofNullable(userRepository.findUserByEmail(name))
+                .orElseThrow(()-> new RuntimeException("User with this name doesn't exist"));
         return user;
     }
 

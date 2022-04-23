@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -19,10 +20,8 @@ public class UserDetailsService implements org.springframework.security.core.use
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findUserByEmail(username);
-        if (user == null) {
-            throw new UsernameNotFoundException(username);
-        }
+        User user = Optional.ofNullable(userRepository.findUserByEmail(username))
+                .orElseThrow(() -> new UsernameNotFoundException(username));
         Set<GrantedAuthority> authorities = new HashSet<>();
         return new MyUserPrincipal(user, authorities);
     }

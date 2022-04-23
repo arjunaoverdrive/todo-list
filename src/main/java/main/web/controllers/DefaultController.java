@@ -27,7 +27,7 @@ public class DefaultController {
 
     @ModelAttribute("tasks")
     public List<Task> tasks() {
-        return taskService.getTasks(user());
+        return taskService.getTasks();
     }
 
     @ModelAttribute("task2add")
