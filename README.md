@@ -7,12 +7,11 @@ ToDoList Java Spring Boot application
 Installation steps:
 1. Install MySQL v 8.x. Create a schema and a user with admin rights for this schema.  
 2. Use mvn package to build a .jar file.  
-3. Open the application.properties file, and replace the default values with the valid the DB credentials in 
-spring.datasource parameters.  
+3. Open the application.yml file, and replace the default values with the valid the DB credentials in the
+spring:datasource parameters.  
 Besides, remember to uncomment #spring.jpa.hibernate.ddl-auto=create when starting the application for the first time so that the db is initialized.
 4. Specify the server port. Otherwise, the app will use port 8888.
-5. Once the application.properties file is modified, remember to place it and the log4j.xml files to the jar artifact in the <your_jar>/BOOT-INF/classes folder.
-6. Create a bat file to run the app without having to open the command prompt. 
+5. Create a bat file to run the app without having to open the command prompt. 
 Insert the following content:   
   chcp 1251  
   start http://localhost:8888  
