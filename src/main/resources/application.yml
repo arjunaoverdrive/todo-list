@@ -6,6 +6,16 @@ spring:
     url: jdbc:mysql://localhost:3306/todolistlib?serverTimezone=Europe/Moscow
     username: root
     password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: 'update'
+    show-sql: true
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db.changelog/db.changelog.master.xml
+
 server:
   port: 8888
   error:

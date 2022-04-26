@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="igor1 (generated)" id="1650975030347-1">
+        <createTable tableName="hibernate_sequence">
+            <column name="next_val" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975030347-2">
+        <createTable tableName="task">
+            <column name="id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deadline" type="datetime(6)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="user_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975030347-3">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975030347-4">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="task"/>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975030347-5">
+        <addUniqueConstraint columnNames="password" constraintName="UK_kiqfjabx9puw3p1eg7kily8kg" tableName="user"/>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975030347-6">
+        <addUniqueConstraint columnNames="email" constraintName="UK_ob8kqyqqgmefl0aco34akdtpe" tableName="user"/>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975030347-7">
+        <createIndex indexName="FK2hsytmxysatfvt0p1992cw449" tableName="task">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975836545-1">
+        <createTable tableName="hibernate_sequence">
+            <column name="next_val" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975836545-2">
+        <createTable tableName="task">
+            <column name="id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deadline" type="datetime(6)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="user_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975836545-3">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975836545-4">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="task"/>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975836545-5">
+        <addUniqueConstraint columnNames="password" constraintName="UK_kiqfjabx9puw3p1eg7kily8kg" tableName="user"/>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975836545-6">
+        <addUniqueConstraint columnNames="email" constraintName="UK_ob8kqyqqgmefl0aco34akdtpe" tableName="user"/>
+    </changeSet>
+    <changeSet author="igor1 (generated)" id="1650975836545-7">
+        <createIndex indexName="FK2hsytmxysatfvt0p1992cw449" tableName="task">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
