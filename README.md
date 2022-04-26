@@ -15,6 +15,6 @@ Besides, remember to uncomment #spring.jpa.hibernate.ddl-auto=create when starti
 Insert the following content:   
   chcp 1251  
   start http://localhost:8888  
-  java -jar "<path-to-file>\ToDoList-1.0-SNAPSHOT.jar"  
+  java -jar "path-to-file\ToDoList-1.0-SNAPSHOT.jar"  
 Remember to replace the path to the jar file with the actual address. 
 6. After the first start, comment the #spring.jpa.hibernate.ddl-auto=create, or set the value to none: spring.jpa.hibernate.ddl-auto=none
