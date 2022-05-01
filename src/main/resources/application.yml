@@ -2,6 +2,10 @@ spring:
   application:
     name: ToDoList
 
+  profiles:
+    active:
+      - prod
+
   datasource:
     url: jdbc:mysql://localhost:3306/todolistlib?serverTimezone=Europe/Moscow
     username: root
@@ -9,11 +13,12 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: 'update'
+      ddl-auto: 'validate'
+      database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
 
   liquibase:
-    enabled: true
+    enabled: false
     change-log: classpath:db.changelog/db.changelog.master.xml
 
 server:

@@ -1,8 +1,8 @@
-package main.services;
+package com.igor_klimov.main.services;
 
-import main.web.dto.LoginForm;
-import main.model.User;
-import main.repositories.UserRepository;
+import com.igor_klimov.main.repositories.UserRepository;
+import com.igor_klimov.main.web.dto.LoginForm;
+import com.igor_klimov.main.model.User;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,11 +1,11 @@
-package main.web.controllers;
+package com.igor_klimov.main.web.controllers;
 
-import main.model.User;
-import main.services.TaskService;
-import main.services.UserService;
+import com.igor_klimov.main.model.Task;
+import com.igor_klimov.main.model.User;
+import com.igor_klimov.main.services.TaskService;
+import com.igor_klimov.main.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import main.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.text.DateFormat;

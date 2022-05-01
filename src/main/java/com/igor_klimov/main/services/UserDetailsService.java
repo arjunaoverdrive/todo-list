@@ -1,8 +1,8 @@
-package main.services;
+package com.igor_klimov.main.services;
 
-import main.model.MyUserPrincipal;
-import main.model.User;
-import main.repositories.UserRepository;
+import com.igor_klimov.main.model.User;
+import com.igor_klimov.main.repositories.UserRepository;
+import com.igor_klimov.main.model.MyUserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

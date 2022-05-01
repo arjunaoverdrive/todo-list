@@ -1,7 +1,7 @@
-package main.web.controllers;
+package com.igor_klimov.main.web.controllers;
 
-import main.web.dto.LoginForm;
-import main.services.LoginService;
+import com.igor_klimov.main.services.LoginService;
+import com.igor_klimov.main.web.dto.LoginForm;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

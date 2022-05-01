@@ -1,8 +1,8 @@
-package main.services;
+package com.igor_klimov.main.services;
 
-import main.model.Task;
-import main.model.User;
-import main.repositories.TaskRepository;
+import com.igor_klimov.main.model.Task;
+import com.igor_klimov.main.model.User;
+import com.igor_klimov.main.repositories.TaskRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

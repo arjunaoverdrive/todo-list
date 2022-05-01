@@ -1,4 +1,4 @@
-package main.model;
+package com.igor_klimov.main.model;
 
 
 

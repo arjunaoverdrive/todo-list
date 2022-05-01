@@ -1,7 +1,7 @@
-package main.repositories;
+package com.igor_klimov.main.repositories;
 
-import main.model.Task;
-import main.model.User;
+import com.igor_klimov.main.model.Task;
+import com.igor_klimov.main.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

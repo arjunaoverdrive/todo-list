@@ -1,18 +1,12 @@
-package main.web.controllers;
+package com.igor_klimov.main.web.controllers;
 
-import main.model.Task;
-import main.model.User;
-import main.services.TaskService;
-import main.services.UserService;
+import com.igor_klimov.main.model.Task;
+import com.igor_klimov.main.services.TaskService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/tasks")

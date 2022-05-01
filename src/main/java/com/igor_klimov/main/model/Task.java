@@ -1,4 +1,4 @@
-package main.model;
+package com.igor_klimov.main.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;

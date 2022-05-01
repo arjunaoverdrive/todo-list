@@ -1,6 +1,6 @@
-package main;
+package com.igor_klimov.main;
 
-import main.repositories.UserRepository;
+import com.igor_klimov.main.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,7 +10,6 @@ public class Main {
 
     @Autowired
     private UserRepository userRepository;
-
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);

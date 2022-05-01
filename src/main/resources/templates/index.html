@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>To Do List</title>
     <script src="/js/jquery-3.4.0.min.js"></script>
     <script src="/js/script.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 </head>
 <body>
 <div id="central-container">
@@ -48,35 +48,35 @@
             <button type="button" id="all" class="all chosen">Все</button>
         </div>
 
-        <div class="task-list">
-            <div>
-                <div id="add-task-page" class="hidden">
-                    <div id="add-header">
-                        <h3>Добавить новое дело</h3>
-                        <button type="submit" id="save-button" th:form="add-task-form"><span>Добавить дело</span>
-                        </button>
-                    </div>
-                    <form id="add-task-form" method="POST" name="add-task-form"   th:action="@{/tasks}"
-                          th:object=${task2add} enctype="application/json">
-                        <label>Название
-                            <input id="name" type="text" size="50"
-                                   name="name" th:field="*{name}"
-                                   th:maxlength="35"
-                                   autofocus="true"><br></label>
-                        <label>Описание
-                            <textarea id="description-text" name="description" th:field="*{description}"></textarea>
-                            <br></label>
-                        <div class="date-container">
-                            <div class="datetime-box">
-                                <label>Выполнить до: <br>
-                                    <input type="datetime-local" id="deadline" th:value="${date}" th:attr="min=${date}"
-                                           required name="deadline"></label>
-                            </div>
-                        </div>
-                    </form>
-
+        <div>
+            <div id="add-task-page" class="hidden">
+                <div id="add-header">
+                    <h3>Добавить новое дело</h3>
+                    <button type="submit" id="save-button" th:form="add-task-form"><span>Добавить дело</span>
+                    </button>
                 </div>
+                <form id="add-task-form" method="POST" name="add-task-form"   th:action="@{/tasks}"
+                      th:object=${task2add} enctype="application/json">
+                    <label>Название
+                        <input id="name" type="text" size="50"
+                               name="name" th:field="*{name}"
+                               th:maxlength="35"
+                               autofocus="true" /><br/></label>
+                    <label>Описание
+                        <textarea id="description-text" name="description" th:field="*{description}"></textarea>
+                        <br/></label>
+                    <div class="date-container">
+                        <div class="datetime-box">
+                            <label>Выполнить до: <br/>
+                                <input type="datetime-local" id="deadline" th:value="${date}" th:attr="min=${date}"
+                                       required="required" name="deadline"/></label>
+                        </div>
+                    </div>
+                </form>
+
             </div>
+        </div>
+        <div class="task-list" id="task-list">
             <div class="task-item" th:each="task : ${tasks}"
                  th:attr="data-deadline=${task.deadline}, data-id=${task.id}">
                 <a class="task-link" href="#" th:attr="data-id=${task.id}" th:text="${task.name}">
@@ -85,26 +85,25 @@
                     <div class="buttons-cont">
                         <button type="submit" class="delete-button" title="check as completed"
                                 th:attr="data-id=${task.id}"
-                                th:action="@{/tasks/delete/{task.id}(task.id=${task.id})}"><img src="check.png">
+                                th:action="@{/tasks/delete/{task.id}(task.id=${task.id})}"><img src="check.png" />
                         </button>
                     </div>
                 </div>
-                
                 <form class="update-task-form hidden" name="update-task-form" th:method="POST"
                       th:action="@{/tasks/{task.id}(task.id=${task.id})}"
                       th:object="${task}"
                       enctype="application/json">
-                    <input type="hidden" name="_method" value="PUT">
+                    <input type="hidden" name="_method" value="PUT" />
                     <label>Название
-                        <input class="name-upd" type="text" name="name" th:maxlength="35" th:value="${task.name}"></label><br>
+                        <input class="name-upd" type="text" name="name" th:maxlength="35" th:value="${task.name}" /></label><br/>
                     <label>Описание
                         <textarea class="description-text-upd" name="description"
-                                  th:text="${task.description}"></textarea></label><br>
+                                  th:text="${task.description}"></textarea></label><br/>
                     <div class="date-container">
                         <div class="datetime-box">
                             <label>Выполнить до:
-                                <br><input type="datetime-local" class="deadline-upd" required name="deadline"
-                                           th:value="${task.deadline}" th:attr="min=${date}"></label>
+                                <br/><input type="datetime-local" class="deadline-upd" required="required" name="deadline"
+                                           th:value="${task.deadline}" th:attr="min=${date}" /></label>
                         </div>
                         <button type="submit" th:id="${task.id}" class="update-button" value="Обновить дело">Обновить
                         </button>

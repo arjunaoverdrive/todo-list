@@ -1,4 +1,4 @@
-package main.web.dto;
+package com.igor_klimov.main.web.dto;
 
 public class LoginForm {
     private String username;

@@ -1,7 +1,7 @@
-package main.web.controllers;
+package com.igor_klimov.main.web.controllers;
 
-import main.services.UserService;
-import main.web.dto.UserDto;
+import com.igor_klimov.main.services.UserService;
+import com.igor_klimov.main.web.dto.UserDto;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
