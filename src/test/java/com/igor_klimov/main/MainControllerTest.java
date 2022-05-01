@@ -15,10 +15,10 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultHandler;
 
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -53,7 +53,7 @@ public class MainControllerTest {
         this.mockMvc.perform(get("/"))
                 .andDo(print())
                 .andExpect(authenticated())
-                .andExpect(xpath("//*[@id='task-list']/div").nodeCount(1))
+                .andExpect(xpath("//*[@id='task-list']/div").nodeCount(2))
                 .andExpect(xpath("//*[@id='task-list']/div[@data-id=1]").exists());
     }
 
@@ -68,5 +68,58 @@ public class MainControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andReturn();
         Assertions.assertThat(result).isNotNull();
+    }
+
+    @Test
+    public void updateTaskTest() throws Exception {
+        MvcResult result = this.mockMvc.perform(put("/tasks/1")
+                        .content("'name' : 'ToDoList', 'deadline': '2022-05-15 18:00:00', 'description': 'todo', 'user_id' : '1'"))
+                .andDo(print())
+                .andExpect(authenticated())
+                .andExpect(status().isOk())
+                .andReturn();
+        Assertions.assertThat(result).isNotNull();
+
+        Assertions.assertThat(result.getResponse().getContentAsString().startsWith("{'id':'1'"));
+    }
+
+    @Test
+    public void getTaskTest() throws Exception{
+        MvcResult result = this.mockMvc.perform(get("/tasks/1"))
+                .andDo(print())
+                .andExpect(authenticated())
+                .andExpect(status().isOk())
+                .andReturn();
+        Assertions.assertThat(result).isNotNull();
+        Assertions.assertThat(result.getResponse().getContentAsString().contains(
+                "'Переписать на микросервисах. Сделать сервис для юзеров, сервис для задач'"));
+    }
+
+    @Test
+    public void deleteTaskTest() throws Exception{
+        MvcResult result = this.mockMvc.perform(delete("/tasks/1"))
+                .andDo(print())
+                .andExpect(authenticated())
+                .andExpect(status().isOk())
+                .andReturn();
+        Assertions.assertThat(result).isNotNull();
+        this.mockMvc.perform(get("/"))
+                .andDo(print())
+                .andExpect(authenticated())
+                .andExpect(xpath("//*[@id='task-list']/div").nodeCount(1));
+    }
+
+    @Test
+    public void deleteAllTasksTest() throws Exception{
+        MvcResult result = this.mockMvc.perform(delete("/tasks/"))
+                .andDo(print())
+                .andExpect(authenticated())
+                .andExpect(status().isOk())
+                .andReturn();
+        Assertions.assertThat(result).isNotNull();
+        this.mockMvc.perform(get("/"))
+                .andDo(print())
+                .andExpect(authenticated())
+                .andExpect(xpath("//*[@id='task-list']/div").nodeCount(0));
     }
 }
