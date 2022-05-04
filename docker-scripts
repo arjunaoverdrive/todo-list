@@ -1,0 +1,25 @@
+docker network create todolist
+
+docker run -d \
+ --network todolist --network-alias mysql \
+ --name mysql
+ -v todo-mysql-data:/var/lib/mysql \
+ -e MYSQL_ROOT_PASSWORD=root \
+ -e MYSQL_DATABASE=todolistlib \
+ mysql:8.0.29
+
+docker exec -it mysql bash
+
+mysql -u root -p root
+
+create schema if not exists todolistlib
+
+docker run -p 8888:8888 \
+-w /app -v "$(pwd):/app" \
+--network todo-list \
+--name todo-list \
+-e MYSQL_HOST=mysql \
+-e MYSQL_USER=root \
+-e MYSQL_PASSWORD=root \
+-e MYSQL+DB=todolistlib \
+todo-list:latest

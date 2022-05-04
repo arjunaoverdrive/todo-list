@@ -22,5 +22,6 @@ Remember to replace the path to the jar file with the actual address.
 Installation steps for Docker containers:  
 This approach implies that you run both the MySQL and the ToDoList in two separate containers.
 1. Pull the image by running the docker pull arjunaoverdrive/todo-list:latest command
-2. Pull the mysql image
+2. Pull the mysql image. Make sure it's 8.x version.
 3. The application is configured to use the 'root' mysql user with the 'root' password and to connect to the 'todolistlib' database. These settings are specified in the src/main/resources/application.yml, so you can modify them.
+4. Docker commands can be taken from docker-scripts
