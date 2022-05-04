@@ -17,6 +17,7 @@ public class User {
     private String lastName;
     @Column(nullable = false, unique = true)
     @Email
+    @Size(max = 64)
     private String email;
     @Column(nullable = false, unique = true)
     @Size(max = 64)

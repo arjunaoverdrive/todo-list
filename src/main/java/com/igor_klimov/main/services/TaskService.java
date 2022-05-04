@@ -46,10 +46,9 @@ public class TaskService {
 
     public Task saveTask(Task task) {
         User user = getCurrentUser();
-        Task savedTask = null;
         task.setUser(user);
-        logger.info("task " + task.getName() + " for user " + user + " has been sent to backend");
-        savedTask = taskRepository.save(task);
+        Task savedTask = taskRepository.save(task);
+        logger.info("task " + savedTask.getName() + " for user " + user + " has been sent to backend");
         return savedTask;
     }
 

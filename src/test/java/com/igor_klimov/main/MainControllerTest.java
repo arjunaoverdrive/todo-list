@@ -1,6 +1,8 @@
 package com.igor_klimov.main;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.igor_klimov.main.model.Task;
+import com.igor_klimov.main.repositories.UserRepository;
 import com.igor_klimov.main.web.controllers.TaskController;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -16,6 +18,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultHandler;
+
+import java.time.LocalDateTime;
 
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -38,6 +42,9 @@ public class MainControllerTest {
     TaskController controller;
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     ObjectMapper mapper;
 
     @Test
@@ -45,7 +52,7 @@ public class MainControllerTest {
         this.mockMvc.perform(get("/"))
                 .andDo(print())
                 .andExpect(authenticated())
-                .andExpect(xpath("//*[@id='central-container']/div[2]/span").string("Игорь"));
+                .andExpect(xpath("//*[@id='central-container']/div[2]/span").string("Igor"));
     }
 
     @Test
@@ -59,9 +66,13 @@ public class MainControllerTest {
 
     @Test
     public void addTaskToListTest() throws Exception {
-        String content = "'name' : 'new task', 'deadline': '2022-05-14 18:00:00', 'description': 'todo', 'user_id' : '1'";
+        Task task = new Task();
+        task.setName("new task");
+        task.setDeadline(LocalDateTime.now().plusDays(5));
+        task.setDescription("todo");
+        task.setUser(userRepository.findById(1).get());
         MvcResult result = this.mockMvc.perform(post("/tasks/")
-                        .content(content))
+                        .content(String.valueOf(task)))
                 .andDo(print())
                 .andExpect(authenticated())
                 .andExpect(status().isOk())

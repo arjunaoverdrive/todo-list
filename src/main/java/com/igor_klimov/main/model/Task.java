@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
